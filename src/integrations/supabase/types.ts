@@ -14,13 +14,256 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      clients: {
+        Row: {
+          address: string | null
+          archived: boolean
+          company: string | null
+          created_at: string
+          email: string | null
+          id: string
+          is_demo: boolean
+          name: string
+          notes: string | null
+          owner_id: string
+          phone: string | null
+        }
+        Insert: {
+          address?: string | null
+          archived?: boolean
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          is_demo?: boolean
+          name: string
+          notes?: string | null
+          owner_id?: string
+          phone?: string | null
+        }
+        Update: {
+          address?: string | null
+          archived?: boolean
+          company?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          is_demo?: boolean
+          name?: string
+          notes?: string | null
+          owner_id?: string
+          phone?: string | null
+        }
+        Relationships: []
+      }
+      invoices: {
+        Row: {
+          client_id: string | null
+          client_snapshot: Json
+          created_at: string
+          discount_type: string
+          discount_value: number
+          due_date: string
+          id: string
+          internal_notes: string | null
+          invoice_date: string
+          is_draft: boolean
+          items: Json
+          notes: string | null
+          number: string
+          owner_id: string
+          status_override: string | null
+          tax_rate: number
+          updated_at: string
+        }
+        Insert: {
+          client_id?: string | null
+          client_snapshot?: Json
+          created_at?: string
+          discount_type?: string
+          discount_value?: number
+          due_date?: string
+          id?: string
+          internal_notes?: string | null
+          invoice_date?: string
+          is_draft?: boolean
+          items?: Json
+          notes?: string | null
+          number: string
+          owner_id?: string
+          status_override?: string | null
+          tax_rate?: number
+          updated_at?: string
+        }
+        Update: {
+          client_id?: string | null
+          client_snapshot?: Json
+          created_at?: string
+          discount_type?: string
+          discount_value?: number
+          due_date?: string
+          id?: string
+          internal_notes?: string | null
+          invoice_date?: string
+          is_draft?: boolean
+          items?: Json
+          notes?: string | null
+          number?: string
+          owner_id?: string
+          status_override?: string | null
+          tax_rate?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "invoices_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      payments: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          invoice_id: string
+          method: string
+          notes: string | null
+          owner_id: string
+          paid_on: string
+          reference: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          invoice_id: string
+          method?: string
+          notes?: string | null
+          owner_id?: string
+          paid_on?: string
+          reference?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          invoice_id?: string
+          method?: string
+          notes?: string | null
+          owner_id?: string
+          paid_on?: string
+          reference?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_invoice_id_fkey"
+            columns: ["invoice_id"]
+            isOneToOne: false
+            referencedRelation: "invoices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      services: {
+        Row: {
+          archived: boolean
+          created_at: string
+          description: string | null
+          id: string
+          is_demo: boolean
+          name: string
+          owner_id: string
+          rate: number
+        }
+        Insert: {
+          archived?: boolean
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_demo?: boolean
+          name: string
+          owner_id?: string
+          rate?: number
+        }
+        Update: {
+          archived?: boolean
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_demo?: boolean
+          name?: string
+          owner_id?: string
+          rate?: number
+        }
+        Relationships: []
+      }
+      settings: {
+        Row: {
+          address: string | null
+          business_name: string
+          business_type: string
+          currency_symbol: string
+          default_due_days: number
+          default_note: string
+          email: string | null
+          invoice_prefix: string
+          logo_url: string | null
+          next_number: number
+          owner_id: string
+          payment_methods: Json
+          phone: string | null
+          tax_id: string | null
+          updated_at: string
+          website: string | null
+        }
+        Insert: {
+          address?: string | null
+          business_name?: string
+          business_type?: string
+          currency_symbol?: string
+          default_due_days?: number
+          default_note?: string
+          email?: string | null
+          invoice_prefix?: string
+          logo_url?: string | null
+          next_number?: number
+          owner_id?: string
+          payment_methods?: Json
+          phone?: string | null
+          tax_id?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Update: {
+          address?: string | null
+          business_name?: string
+          business_type?: string
+          currency_symbol?: string
+          default_due_days?: number
+          default_note?: string
+          email?: string | null
+          invoice_prefix?: string
+          logo_url?: string | null
+          next_number?: number
+          owner_id?: string
+          payment_methods?: Json
+          phone?: string | null
+          tax_id?: string | null
+          updated_at?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      ensure_workspace: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never

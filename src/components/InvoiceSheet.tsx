@@ -1,7 +1,7 @@
 import logoAsset from "@/assets/spectra-logo.png.asset.json";
 import { fmtDate, money, num, statusOf, totals, type Invoice, type Settings } from "@/lib/invoice";
 
-type Props = { invoice: Invoice; settings: Settings; paid: number };
+type Props = { invoice: Invoice; settings: Settings; paid: number; id?: string };
 
 function QrBox({ src, label }: { src: string | null; label: string }) {
   return src ? (
@@ -15,7 +15,7 @@ function QrBox({ src, label }: { src: string | null; label: string }) {
   );
 }
 
-export function InvoiceSheet({ invoice, settings, paid }: Props) {
+export function InvoiceSheet({ invoice, settings, paid, id }: Props) {
   const t = totals(invoice, paid);
   const status = statusOf(invoice, t.total, paid);
   const sym = settings.currency_symbol;
@@ -25,7 +25,7 @@ export function InvoiceSheet({ invoice, settings, paid }: Props) {
   const contact = [settings.address, settings.phone, settings.email, settings.website].filter(Boolean);
 
   return (
-    <div id="invoice-sheet" className="a4-sheet flex flex-col px-[16mm] pb-[12mm] pt-[14mm] text-[9.5pt] leading-relaxed">
+    <div id={id} className="a4-sheet flex flex-col px-[16mm] pb-[12mm] pt-[14mm] text-[9.5pt] leading-relaxed">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">

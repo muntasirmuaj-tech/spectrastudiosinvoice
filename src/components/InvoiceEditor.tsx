@@ -339,7 +339,7 @@ function TRow({ l, v, bold }: { l: string; v: string; bold?: boolean }) {
 
 function PaymentDialog({ open, onOpenChange, defaultAmount, onSave }: {
   open: boolean; onOpenChange: (o: boolean) => void; defaultAmount: number;
-  onSave: (p: Omit<Payment, "id" | "invoice_id" | "created_at">) => Promise<void>;
+  onSave: (p: Omit<Payment, "id" | "invoice_id" | "created_at">) => Promise<unknown>;
 }) {
   const [f, setF] = useState({ amount: "", method: "Bank", paid_on: todayISO(), reference: "", notes: "" });
   useEffect(() => { if (open) setF({ amount: String(defaultAmount || ""), method: "Bank", paid_on: todayISO(), reference: "", notes: "" }); }, [open, defaultAmount]);

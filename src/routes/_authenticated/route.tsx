@@ -1,7 +1,6 @@
 import { createFileRoute, Link, Outlet, redirect, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { FileText, LogOut, Package, Settings as SettingsIcon, Users } from "lucide-react";
-import logoAsset from "@/assets/spectra-logo.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/_authenticated")({
@@ -35,7 +34,7 @@ function AppShell() {
       <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col bg-sidebar text-sidebar-foreground md:flex print:hidden">
         <div className="flex items-center gap-2.5 px-5 py-6">
           <div className="flex h-9 w-9 items-center justify-center rounded-md bg-sheet">
-            <img src={logoAsset.url} alt="" className="h-8 w-8 object-contain" />
+            <img src="/spectra-logo.png" alt="" className="h-8 w-8 object-contain" />
           </div>
           <div className="font-display text-[13px] leading-tight tracking-[0.14em]">
             <div className="font-bold">SPECTRA</div>

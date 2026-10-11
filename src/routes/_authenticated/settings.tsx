@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Upload, X } from "lucide-react";
-import logoAsset from "@/assets/spectra-logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -68,7 +67,7 @@ function SettingsPage() {
 
       <Block title="Business">
         <div className="mb-5 flex items-center gap-4">
-          <img src={s.logo_url || logoAsset.url} alt="Logo" className="h-16 w-16 rounded-md border bg-card object-contain p-1" />
+          <img src={s.logo_url || "/spectra-logo.png"} alt="Logo" className="h-16 w-16 rounded-md border bg-card object-contain p-1" />
           <ImagePicker label="Replace logo" onPick={(url) => set("logo_url", url)} />
           {s.logo_url && <Button variant="ghost" size="sm" onClick={() => set("logo_url", null)}>Use default</Button>}
         </div>

@@ -1,4 +1,3 @@
-import logoAsset from "@/assets/spectra-logo.png.asset.json";
 import { fmtDate, money, num, statusOf, totals, type Invoice, type Settings } from "@/lib/invoice";
 
 type Props = { invoice: Invoice; settings: Settings; paid: number; id?: string };
@@ -21,7 +20,7 @@ export function InvoiceSheet({ invoice, settings, paid, id }: Props) {
   const sym = settings.currency_symbol;
   const c = invoice.client_snapshot;
   const pm = settings.payment_methods;
-  const logo = settings.logo_url || logoAsset.url;
+  const logo = settings.logo_url || "/spectra-logo.png";
   const contact = [settings.address, settings.phone, settings.email, settings.website].filter(Boolean);
 
   return (

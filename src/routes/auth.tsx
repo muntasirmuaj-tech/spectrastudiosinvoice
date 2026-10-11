@@ -1,7 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
-import logoAsset from "@/assets/spectra-logo.png.asset.json";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -61,7 +60,7 @@ function AuthPage() {
       </div>
       <div className="flex items-center justify-center px-6">
         <form onSubmit={submit} className="w-full max-w-sm space-y-5">
-          <img src={logoAsset.url} alt="Spectra Studios" className="mx-auto h-28 w-28 object-contain" />
+          <img src="/spectra-logo.png" alt="Spectra Studios" className="mx-auto h-28 w-28 object-contain" />
           <div className="text-center">
             <h2 className="text-2xl font-semibold">{mode === "in" ? "Welcome back" : "Create your account"}</h2>
             <p className="mt-1 text-sm text-muted-foreground">{mode === "in" ? "Sign in to manage your invoices." : "Set up your private workspace."}</p>
